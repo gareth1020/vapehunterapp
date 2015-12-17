@@ -1,0 +1,45 @@
+{% extends "base/theme.html" %}
+{% load bootstrap_pagination %}
+{% block main_content %}
+<div class="row main-content">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+    {% for eliquid in object_list %}
+        <div class='row'>
+
+            <div class="col-md-6">
+                <h2><a href="{{ eliquid.get_absolute_url }}">{{ eliquid.title }}</a></h2>
+
+                <div class='row'>
+
+                    <div class="col-md-12">
+                        <h4>Created by <a href="https://{{eliquid.page}}">{{ eliquid.manufacturer }}</a></h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6 text-left col-md-6 text-right">
+                <h2>{% include 'base/rating.html' with rating=eliquid.get_average_rating %}</h2>
+
+                    <div class="col-xs-12 text-right">
+                        <h4>{{eliquid.get_average_rating}} out of 5</h4>
+                    </div>
+
+
+            </div>
+
+        </div>
+
+
+   
+{% include 'eliquids/specifics.html' with eliquid=eliquid %}
+
+    {% endfor %}
+    <div class="col-md-2"></div>
+</div>
+</div>
+{% endblock %}
+
+{% block pagination %}
+    {% bootstrap_paginate page_obj range=10 show_prev_next="false" show_first_last="true" %}
+{% endblock %}

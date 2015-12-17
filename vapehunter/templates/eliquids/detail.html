@@ -1,0 +1,61 @@
+{% extends "base/theme.html" %}
+{% block main_content %}
+<div class="row main-content">
+    <div class="col-sm-2"></div>
+    <div class="col-xs-12 col-sm-8">
+        <div class='row'>
+
+            <div class="col-xs-6">
+                <h2><a href="{{ eliquid.get_absolute_url }}">{{ eliquid.title }}</a></h2>
+
+                <div class='row'>
+
+                    <div class="col-xs-12">
+                        <h4>Created by <a href="{{ eliquid.manufacturer.get_absolute_url }}">{{ eliquid.manufacturer }}</a></h4>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-xs-6 text-right">
+                <h2>{% include 'base/rating.html' with rating=eliquid.get_average_rating %}</h2>
+                <div class="col-xs-12 text-right">
+                  <h4>{{eliquid.get_average_rating}} out of 5</h4>
+                </div>
+
+
+            </div> 
+        </div>
+
+{% include 'eliquids/specifics.html' with eliquid=eliquid %}
+
+<div class='row'>
+    <div class="col-xs-12">
+
+<!--    <a type="button" href="{% url 'eliquids_update' pk=eliquid.id %}" class="btn btn-default pull-center">Edit</a>  -->
+
+    {% if user_review %}
+    <a type="button" href="{% url 'review_update' pk=eliquid.id %}" class="btn btn-default pull-right">Update Your Review</a>
+    {% else %}
+    <a type="button" href="{% url 'review_create' pk=eliquid.id %}" class="btn btn-default pull-right">Submit Your Review</a>
+    {% endif %}
+    </div>
+</div>
+
+
+ <div class="col-xs-12">
+    <div class="col-xs-12" style="height:100px;"></div>
+
+ {% for review in eliquid.get_reviews %}
+ {% include 'base/review.html' with eliquid=eliquid %}
+ {% endfor %}
+ </div>
+
+<div class="col-sm-2">
+</div>
+</div>
+{% endblock %}
+
+<h3>{% include 'base/rating.html' with rating=eliquid.get_average_rating %}</h3>
+
+</div>

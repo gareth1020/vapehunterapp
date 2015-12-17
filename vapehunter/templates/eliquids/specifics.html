@@ -1,0 +1,36 @@
+            <div class ='row'>
+
+            <div class="col-md-6">
+                {% if eliquid.description%}<left>{{eliquid.description}}</left>{% endif %}
+            </div>
+            <div class="col-md-6">
+            </div>   
+
+            <div class="col-xs-12" style="height:15px;"></div>
+
+            <div class="col-md-4">         
+                <p><b>VG/PG Ratio: </b>{% if eliquid.pgratio %}{% if eliquid.vgratio %} {{eliquid.vgratio}}VG / {{eliquid.pgratio}}PG{% else %}-----{% endif %}{% endif %}</p>
+            </div>
+
+            <div class="col-md-4">
+                <p><b>Bottle Size(s): </b>
+                    {% if eliquid.bottlesize1 %}{{eliquid.bottlesize1}}{% else %}-----{% endif %}
+                    {% if eliquid.bottlesize2 %}, {{eliquid.bottlesize2}}{% endif %}
+                    {% if eliquid.bottlesize3 %}, {{eliquid.bottlesize3}}{% endif %}
+                    {% if eliquid.bottlesize4 %}, {{eliquid.bottlesize4}}{% endif %}
+                    {% if eliquid.bottlesize5 %}, {{eliquid.bottlesize5}}{% endif %}
+                    {% if eliquid.bottlesize1 != null %} ml{% endif %}</p>
+            </div>
+            
+            <div class="col-md-4">
+                <p><b>Nicotine Strengths: </b>
+                    {% if eliquid.nicstrength1 %}{{eliquid.nicstrength1}}{% else %}-----{% endif %}
+                    {% if eliquid.nicstrength2 %}, {{eliquid.nicstrength2}}{% endif %}
+                    {% if eliquid.nicstrength3 %}, {{eliquid.nicstrength3}}{% endif %}
+                    {% if eliquid.nicstrength4 %}, {{eliquid.nicstrength4}}{% endif %}
+                    {% if eliquid.nicstrength5 %}, {{eliquid.nicstrength5}}{% endif %}
+                    {% if eliquid.nicstrength6 %}, {{eliquid.nicstrength6}}{% endif %}
+                    {% if eliquid.nicstrength1 != null %} mg/ml{% endif %}</p>
+            </div>
+            </div>
+            <div class="col-xs-12" style="height:30px;"></div>
